@@ -1,0 +1,31 @@
+[user]
+	name = Damien Sawyer
+	email = damiensawyer@gmail.com
+[branch]
+	autosetuprebase = never
+[core]
+	excludesfile = /Users/damiensawyer/.gitignore_global
+	editor = vi
+[difftool "sourcetree"]
+	cmd = kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[alias]
+  co = checkout
+  ci = commit
+  di = diff
+  sh = show
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  gl=log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset'
+  gla=log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%CresetI' --all
+  poh=push origin head
+  up=merge head @{u}
