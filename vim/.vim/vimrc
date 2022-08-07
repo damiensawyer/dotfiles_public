@@ -1,6 +1,6 @@
 call plug#begin("~/.vim/plugged")
   " Theme
-  Plug 'dracula/vim'
+  " Plug 'dracula/vim'
 
   " Language Client
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -84,7 +84,8 @@ let mapleader = "-"
 
 " Theme
 " syntax enable
-colorscheme dracula
+" colorscheme dracula
+colorscheme darkblue
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
