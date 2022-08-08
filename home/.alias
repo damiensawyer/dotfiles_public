@@ -1,0 +1,11 @@
+#!/bin/bash
+alias n="cd ~/code/notes"
+alias v="cd ~/code/vimrc"
+alias x2q="cd ~/code/X20.CQRS/"
+alias c="cd  ~/code/"
+alias cqrs="cd ~/code/X20.CQRS/src/CQRS"
+alias coret="cd ~/code/X20.CQRS/src/CQRS/X20.CQRS.Core.Tests/"
+alias cored="cd ~/code/X20.CQRS/src/CQRS/X20.CQRS.DB.Tests/"
+# alias gh="cd ~/code/X20.CQRS/src/CQRS/integratorHosts/genericHost"
+alias dc="cd ~/code/DCAP"
+alias dotf="cd ~/.dotfiles"
