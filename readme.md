@@ -7,6 +7,18 @@ The procedure is simple.
 - So, if a file normally resides at the top level of your home directory, it would go into the top level of the program’s subdirectory. If a file normally goes in the default ${XDG_CONFIG_HOME}/${PKGNAME} location (${HOME}/.config/${PKGNAME}), then it would instead go in ${HOME}/dotfiles/${PKGNAME}/.config/${PKGNAME} and so on
 - From the .dotfiles folder, run stow $PKGNAME which will generate symlinks.
 
+# Examples
+``` bash
+# install
+stow -Sv vim nvim htop
+
+# remove
+stow -Dv vim nvim htop
+
+# reinstall
+stow -Rv vim nvim htop
+```
+
 
 
 
