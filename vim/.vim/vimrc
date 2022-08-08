@@ -3,8 +3,8 @@ call plug#begin("~/.vim/plugged")
   " Plug 'dracula/vim'
 
   " Language Client
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-rust-analyzer']
   " TypeScript Highlighting
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
@@ -26,7 +26,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'rust-lang/rust.vim'
   Plug 'timonv/vim-cargo'
   " coc - C-space to suggest, C-y to accept
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dense-analysis/ale'
 
   
@@ -86,6 +86,79 @@ let mapleader = "-"
 " syntax enable
 " colorscheme dracula
 colorscheme darkblue
+  " Language Client
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
+  " TypeScript Highlighting
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  Plug 'dhruvasagar/vim-zoom'
+
+  " File Explorer with Icons
+  Plug 'scrooloose/nerdtree'
+  Plug 'ryanoasis/vim-devicons'
+
+  " File Search
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  " add / remove comments
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+
+  " rust stuff from https://blog.logrocket.com/configuring-vim-rust-development/. His config is https://github.com/zupzup/dotfiles-linux/blob/main/.vimrc
+  " Note that you have to run :CocInstall coc-rust-analyzer after PlugInstall
+  Plug 'rust-lang/rust.vim'
+  Plug 'timonv/vim-cargo'
+  " coc - C-space to suggest, C-y to accept
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'dense-analysis/ale'
+
+  
+call plug#end()
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+" This might need to change https://stackoverflow.com/a/72341811/494635
+" https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim
+" You need to have node installed. You can specify it below... or, on OSX use
+" nvm alias default 10.17.0
+" let g:coc_node_path = '/home/damien/.nvm/versions/node/v16.14.2/bin/node'
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" See https://github.com/neoclide/coc.nvim/pull/3862
+" Checkout :h coc-completion for details.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+  " remap for complete to use tab and <cr>
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  inoremap <silent><expr> <c-space> coc#refresh()
+
+  hi CocSearch ctermfg=12 guifg=#18A3FF
+  hi CocMenuSel ctermbg=109 guibg=#13354A
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Enable theming support
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
