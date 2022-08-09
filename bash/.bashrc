@@ -133,3 +133,4 @@ esac
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source /usr/share/autojump/autojump.sh
+. "$HOME/.cargo/env"

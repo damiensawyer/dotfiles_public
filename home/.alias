@@ -2,6 +2,7 @@
 alias n="cd ~/code/notes"
 alias v="cd ~/code/vimrc"
 alias c="cd  ~/code/"
+alias cb="cd ~/code/codebriefcase_revised"
 # alias gh="cd ~/code/X20.CQRS/src/CQRS/integratorHosts/genericHost"
 alias dc="cd ~/code/DCAP"
 alias dotf="cd ~/.dotfiles"
