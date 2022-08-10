@@ -13,3 +13,5 @@ alias ls='exa -alh --git'
 alias lst='exa -alh --git --tree --level=5 --color=always'
 alias lstp='exa -alh --git --tree --level=5 --color=always | less -R'
 alias lstpg='exa -alh --git --tree --level=5 --color=always --git-ignore | less -R'
+
+unalias ag 2>/dev/null
