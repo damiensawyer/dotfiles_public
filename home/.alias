@@ -15,3 +15,7 @@ alias lstp='exa -alh --git --tree --level=5 --color=always | less -R'
 alias lstpg='exa -alh --git --tree --level=5 --color=always --git-ignore | less -R'
 
 unalias ag 2>/dev/null
+
+# need NVM install obviously
+nvm alias default 16.16.0
+nvm use default;
