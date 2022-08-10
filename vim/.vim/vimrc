@@ -85,7 +85,7 @@ let mapleader = "-"
 " Theme
 " syntax enable
 " colorscheme dracula
-colorscheme darkblue
+  colorscheme evening
   " Language Client
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
@@ -122,6 +122,7 @@ let g:rustfmt_fail_silently = 0
 " https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim
 " You need to have node installed. You can specify it below... or, on OSX use
 " nvm alias default 10.17.0
+let g:coc_node_path = trim(system('which node'))
 " let g:coc_node_path = '/home/damien/.nvm/versions/node/v16.14.2/bin/node'
 " inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
