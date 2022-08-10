@@ -1,3 +1,4 @@
 # See themes https://ohmyposh.dev/docs/themes
 eval "$(oh-my-posh init bash --config ~/.oh-my-posh/themes/iterm2.omp.json)"
 unalias foo 2>/dev/null
+source /usr/share/autojump/autojump.bash
