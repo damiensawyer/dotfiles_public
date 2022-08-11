@@ -27,8 +27,11 @@
   dump = cat-file -p
   gl=log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset'
   gla=log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%CresetI' --all
-  poh=push origin head
-  pom=push origin main
+  phead=push origin head
+  pmain=push origin main
+  pmast=push origin master
   up=merge head @{u}
 [http]
 	postBuffer = 157286400
+[init]
+	defaultBranch = main
