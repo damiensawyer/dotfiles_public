@@ -3,3 +3,5 @@
 eval "$(oh-my-posh init bash --config ~/.oh-my-posh/themes/default.omp.json)"
 unalias foo 2>/dev/null
 source /usr/share/autojump/autojump.bash
+feh --bg-scale ~/code/wallpaper/parrot.jpg # need to install feh
+export PATH=/home/damien/code/codebriefcase_revised/bash/leopardbash:$PATH

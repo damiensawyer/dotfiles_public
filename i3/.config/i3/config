@@ -188,4 +188,4 @@ bar {
 
 # This is for high dpi displays
 exec xrandr --dpi 192
-
+#feh --bg-scale ~/code/wallpaper/parrot.jpg # need to install feh
