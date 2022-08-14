@@ -6,12 +6,6 @@
 [core]
 	excludesfile = /Users/damiensawyer/.gitignore_global
 	editor = vi
-[difftool "sourcetree"]
-	cmd = kdiff3 \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -35,3 +29,13 @@
 	postBuffer = 157286400
 [init]
 	defaultBranch = main
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	path = /usr/bin/kdiff3
+	trustExitCode = false
+[diff]
+	guitool = kdiff3
+[difftool "kdiff3"]
+	path = /usr/bin/kdiff3
+	trustExitCode = false
