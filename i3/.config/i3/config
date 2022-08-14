@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -189,3 +189,4 @@ bar {
 # This is for high dpi displays
 exec xrandr --dpi 192
 #feh --bg-scale ~/code/wallpaper/parrot.jpg # need to install feh
+bindsym $mod+Return exec tilix
