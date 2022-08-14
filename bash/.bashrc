@@ -143,3 +143,4 @@ export NVM_DIR="$HOME/.nvm"
 
 source ~/.alias
 source ~/.custom-profile
+source /home/damien/code/alacritty/extra/completions/alacritty.bash
