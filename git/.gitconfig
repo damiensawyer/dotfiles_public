@@ -5,7 +5,7 @@
 	autosetuprebase = never
 [core]
 	excludesfile = /Users/damiensawyer/.gitignore_global
-	editor = vi
+	editor = nvim
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
