@@ -13,6 +13,7 @@ alias ll='ls -alh'
 alias lst='exa -alh --git --tree --level=5 --color=always'
 alias lstp='exa -alh --git --tree --level=5 --color=always | less -R'
 alias lstpg='exa -alh --git --tree --level=5 --color=always --git-ignore | less -R'
+alias bat='batcat'
 
 unalias ag 2>/dev/null
 

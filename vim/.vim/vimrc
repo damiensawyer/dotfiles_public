@@ -244,4 +244,4 @@ nnoremap 'g 'G
 nnoremap `h `H
 nnoremap 'h 'H
 
-
+set modifiable
