@@ -25,6 +25,7 @@
   pmain=push origin main
   pmast=push origin master
   up=merge head @{u}
+	sync = !git pull && git push
 [http]
 	postBuffer = 157286400
 [init]
