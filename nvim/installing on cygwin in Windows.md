@@ -13,4 +13,15 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vim/vimrc
 
+## Edit August 2024
+- in the world of chatGPT, dropping VIM completely for NVIM
+- therefore no vimrc
+- only init.lua
+
+
+Installed packer with 
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+in Neovim ran
+:PackerSync
 
