@@ -18,7 +18,7 @@ alias bat='batcat'
 unalias ag 2>/dev/null
 
 # need NVM install obviously
-nvm alias default 16.16.0
+nvm alias default 20.16.0
 nvm use default;
 
 # this is notes for video: http://www.youtube.com/watch?v=fKP0FLp3uW0
