@@ -31,6 +31,14 @@ require('packer').startup(function(use)
         branch = 'release'
     }
     use 'dense-analysis/ale'
+    use 'neovim/nvim-lspconfig'  -- LSP configurations
+    use 'jose-elias-alvarez/typescript.nvim'  -- TypeScript support
+
+    -- Syntax Highlighting and Code Understanding
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     -- File Explorer with Icons
     use 'preservim/nerdtree'
@@ -42,6 +50,10 @@ require('packer').startup(function(use)
         run = './install --all'
     }
     use 'junegunn/fzf.vim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     -- Commenting and Surrounding
     use 'tpope/vim-commentary'
@@ -94,12 +106,12 @@ vim.g.rustfmt_fail_silently = 0
 
 -- coc.nvim settings
 vim.cmd [[
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-rust-analyzer', 'coc-sh']
+  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-rust-analyzer', 'coc-sh', 'coc-tsserver']
   let g:coc_node_path = trim(system('which node'))
 
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-    inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "\<Tab>" : coc#refresh()
+  inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "\<Tab>" : coc#refresh()
 
   inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -122,6 +134,55 @@ vim.api.nvim_set_keymap('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : 
     expr = true,
     noremap = true
 })
+
+-- LSP settings for TypeScript
+require('lspconfig').tsserver.setup {
+    on_attach = function(client, bufnr)
+        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+        -- Mappings.
+        local opts = { noremap=true, silent=true }
+
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+        buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+        buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+        buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+        buf_set_keymap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+        buf_set_keymap('n', '<space>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+        buf_set_keymap('n', '<space>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+        buf_set_keymap('n', '<space>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+        buf_set_keymap('n', '<space>D', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+        buf_set_keymap('n', '<space>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+        buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+        buf_set_keymap('n', '<space>e', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+        buf_set_keymap('n', '[d', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+        buf_set_keymap('n', ']d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+        buf_set_keymap('n', '<space>q', '<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+        buf_set_keymap('n', '<space>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    end,
+    flags = {
+        debounce_text_changes = 150,
+    }
+}
+
+-- Treesitter configuration
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "typescript", "javascript", "html", "css" }, -- Install these parsers
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+
+-- Telescope keybindings for better navigation
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true, silent = true })
 
 -- Other settings and keymaps
 vim.o.splitright = true
@@ -161,4 +222,3 @@ vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', {
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', {
     noremap = true
 })
-
