@@ -25,3 +25,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 in Neovim ran
 :PackerSync
 
+
+## Cygwin and lazyvim
+See https://dev.to/kaiwalter/share-neovim-configuration-between-linux-and-windows-4gh8#:~:text=On%20Windows%20NeoVim%20gets%20its,%5CLocal%5Cnvim%2Ddata%20.
+clone lazyvim into %userprofile%\AppData\Local\nvim
