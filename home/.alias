@@ -10,9 +10,9 @@ alias gp='~/gp.sh'
 
 alias ll='ls -alh'
 # alias ls='exa -alh --git' # leave ls as standard so that we can use it in bash scripts
-alias lst='exa -alh --git --tree --level=5 --color=always'
-alias lstp='exa -alh --git --tree --level=5 --color=always | less -R'
-alias lstpg='exa -alh --git --tree --level=5 --color=always --git-ignore | less -R'
+alias lst='eza -alh --git --tree --level=5 --color=always'
+alias lstp='eza -alh --git --tree --level=5 --color=always | less -R'
+alias lstpg='eza -alh --git --tree --level=5 --color=always --git-ignore | less -R'
 alias bat='batcat'
 
 unalias ag 2>/dev/null
